@@ -21,9 +21,12 @@ for (i in 1999:2023) {
   # destination 
   destfile <- paste0("data/eif_public/gridded_eif_pollutant", i, ".parquet")
   
-  GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
+  if(!file.exists(destfile)) {
+    
+    GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
+    
+  }
 
-  
 }
 
 
@@ -38,8 +41,12 @@ for (i in 1999:2023) {
   # destination 
   destfile <- paste0("data/eif_public/gridded_eif_ageracesex", i, ".parquet")
   
-  GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
+  if(!file.exists(destfile)) {
   
+    GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
+
+  }
+      
 }
 
 # 
@@ -52,6 +59,9 @@ for (i in 1999:2023) {
   # destination 
   destfile <- paste0("data/eif_public/gridded_eif_pop_raceincome", i, ".parquet")
   
-  GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
+  if(!file.exists(destfile)) {
+  
+    GET(url, write_disk(destfile, overwrite = TRUE)) # download and save parquet
 
+  }
 }
