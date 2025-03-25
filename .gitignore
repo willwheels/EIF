@@ -4,6 +4,7 @@
 .Ruserdata
 .Rda
 .rda
+*.rda
 
 
 *.parquet
