@@ -11,7 +11,19 @@ load(here::here("data", "eif_grid_topology.rda"))
 
 tidytable::inv_gc()
 
-#spplot(eif_grid_topology)
 
-## only plot one of lat/long
+race_income_23 <- read_parquet(here::here("data", "eif_public", "gridded_eif_pop_raceincome2023.parquet"))
+
+
+## the join maybe works but there are mostly NAs after the join
+eif_grid_topology@data <- eif_grid_topology@data |>
+  left_join(race_income_23)
+
+summary(eif_grid_topology@data)
+
+# these error out
+
+spplot(eif_grid_topology, "income_decile")
+spplot(eif_grid_topology, c("n_noise"))
+
 ## link w/ data to limit to 
